@@ -10,18 +10,21 @@
   />
   <style>
     :root {
-      --bg: #0b1220;
-      --bg-soft: #111b2e;
-      --card: rgba(255, 255, 255, 0.04);
-      --card-strong: rgba(255, 255, 255, 0.06);
-      --text: #edf2f7;
-      --muted: #a8b3c7;
-      --accent: #d4a017;
-      --accent-dark: #b98910;
-      --border: rgba(255, 255, 255, 0.08);
-      --max-width: 1120px;
-      --shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
-      --radius: 18px;
+      --bg: #2f3430;
+      --bg-dark: #232824;
+      --panel: #4a4f49;
+      --panel-soft: #535851;
+      --panel-alt: #434842;
+      --border: #8d9364;
+      --border-soft: rgba(141, 147, 100, 0.45);
+      --text: #e7ddb3;
+      --muted: #d3c99f;
+      --accent: #8f946f;
+      --accent-hover: #a0a57d;
+      --button-text: #f4ebc3;
+      --shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+      --radius: 10px;
+      --max-width: 1180px;
     }
 
     * {
@@ -36,8 +39,9 @@
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at top, rgba(212, 160, 23, 0.14), transparent 30%),
-        linear-gradient(180deg, #08101c 0%, var(--bg) 100%);
+        linear-gradient(rgba(35, 40, 36, 0.82), rgba(35, 40, 36, 0.88)),
+        url("images/gameplay.jpg") center top / cover fixed no-repeat,
+        var(--bg-dark);
       color: var(--text);
       line-height: 1.6;
     }
@@ -60,24 +64,34 @@
     .nav {
       position: sticky;
       top: 0;
-      z-index: 50;
-      backdrop-filter: blur(12px);
-      background: rgba(8, 16, 28, 0.82);
-      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      background: rgba(35, 40, 36, 0.94);
+      border-bottom: 1px solid var(--border-soft);
+      backdrop-filter: blur(10px);
     }
 
     .nav-inner {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 18px;
       padding: 14px 0;
     }
 
     .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       font-weight: 800;
-      letter-spacing: 0.5px;
       font-size: 1.05rem;
+      letter-spacing: 0.5px;
+      color: var(--text);
+    }
+
+    .brand img {
+      height: 30px;
+      width: auto;
+      border: 1px solid var(--border-soft);
     }
 
     .nav-links {
@@ -99,10 +113,11 @@
     .btn {
       display: inline-block;
       padding: 12px 18px;
-      border-radius: 10px;
+      border-radius: 2px;
       font-weight: 700;
-      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
-      border: 1px solid transparent;
+      border: 1px solid var(--border);
+      transition: 0.18s ease;
+      cursor: pointer;
     }
 
     .btn:hover {
@@ -111,39 +126,38 @@
 
     .btn-primary {
       background: var(--accent);
-      color: #111827;
+      color: var(--button-text);
     }
 
     .btn-primary:hover {
-      background: var(--accent-dark);
+      background: var(--accent-hover);
     }
 
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(83, 88, 81, 0.82);
       color: var(--text);
-      border-color: var(--border);
     }
 
     .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.07);
+      background: rgba(94, 100, 92, 0.92);
     }
 
     .hero {
-      padding: 72px 0 42px;
+      padding: 70px 0 42px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 34px;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 28px;
       align-items: center;
     }
 
     .eyebrow {
       display: inline-block;
-      margin-bottom: 12px;
-      color: var(--accent);
-      font-weight: 800;
+      margin-bottom: 14px;
+      color: var(--muted);
+      font-weight: 700;
       font-size: 0.82rem;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -151,14 +165,15 @@
 
     h1 {
       margin: 0 0 16px;
-      font-size: clamp(2.5rem, 5vw, 4.6rem);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
       line-height: 1.02;
+      text-transform: uppercase;
     }
 
     .hero p {
       margin: 0 0 24px;
       color: var(--muted);
-      font-size: 1.08rem;
+      font-size: 1.05rem;
       max-width: 700px;
     }
 
@@ -174,66 +189,64 @@
       flex-wrap: wrap;
       gap: 18px;
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.94rem;
     }
 
     .panel,
     .feature-card,
-    .shot,
     .step,
-    .faq-item,
-    .download-card {
-      background: linear-gradient(180deg, var(--card-strong), var(--card));
+    .cta-card {
+      background: rgba(74, 79, 73, 0.94);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
 
-    .panel {
-      padding: 22px;
+    .hero-panel {
+      padding: 18px;
     }
 
     .launcher-preview {
       aspect-ratio: 16 / 10;
-      border-radius: 14px;
-      border: 1px solid var(--border);
+      border-radius: 6px;
+      border: 1px solid var(--border-soft);
       background:
-        linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.35)),
-        url("images/launcher-screenshot.jpg") center/cover no-repeat,
-        #1a2537;
+        linear-gradient(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.16)),
+        url("images/launcher-screenshot.jpg") center / cover no-repeat,
+        var(--panel-alt);
       display: flex;
       align-items: flex-end;
-      padding: 16px;
+      padding: 14px;
     }
 
     .preview-badge {
-      display: inline-block;
-      background: rgba(11, 18, 32, 0.88);
+      background: rgba(47, 52, 48, 0.92);
       border: 1px solid var(--border);
-      border-radius: 999px;
       padding: 8px 12px;
+      border-radius: 2px;
       font-weight: 700;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
     }
 
-    .mini-stats {
+    .hero-stats {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
-      margin-top: 16px;
+      margin-top: 14px;
     }
 
     .mini-stat {
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(67, 72, 66, 0.9);
+      border: 1px solid var(--border-soft);
+      border-radius: 6px;
       padding: 14px;
     }
 
     .mini-stat strong {
       display: block;
       margin-bottom: 4px;
-      font-size: 1.08rem;
+      font-size: 1.02rem;
+      color: var(--text);
     }
 
     section {
@@ -243,122 +256,49 @@
     .section-title {
       margin: 0 0 10px;
       font-size: 2rem;
+      text-transform: uppercase;
     }
 
     .section-copy {
       margin: 0 0 24px;
       color: var(--muted);
-      max-width: 760px;
+      max-width: 780px;
+    }
+
+    .features-grid,
+    .steps-grid,
+    .cta-grid {
+      display: grid;
+      gap: 18px;
     }
 
     .features-grid {
-      display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
     }
 
-    .feature-card {
+    .feature-card,
+    .step,
+    .cta-card {
       padding: 22px;
     }
 
-    .feature-card h3 {
-      margin: 0 0 8px;
-      font-size: 1.08rem;
-    }
-
-    .feature-card p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .download-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 18px;
-    }
-
-    .download-card {
-      padding: 22px;
-    }
-
-    .download-card h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      font-size: 1.15rem;
-    }
-
-    .download-card p {
+    .feature-card h3,
+    .step h3,
+    .cta-card h3 {
       margin: 0 0 10px;
-      color: var(--muted);
+      font-size: 1.08rem;
+      text-transform: uppercase;
     }
 
-    .checklist {
-      margin: 14px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-    }
-
-    .checklist li {
-      margin-bottom: 8px;
-    }
-
-    .download-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 18px;
-    }
-
-    .shots-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .shot {
-      overflow: hidden;
-    }
-
-    .shot-image {
-      aspect-ratio: 16 / 10;
-      background: #1c2638 center/cover no-repeat;
-    }
-
-    .shot:nth-child(1) .shot-image {
-      background-image: url("images/launcher-screenshot.jpg");
-    }
-
-    .shot:nth-child(2) .shot-image {
-      background-image: url("images/server-browser.jpg");
-    }
-
-    .shot:nth-child(3) .shot-image {
-      background-image: url("images/gameplay.jpg");
-    }
-
-    .shot-content {
-      padding: 16px;
-    }
-
-    .shot-content h3 {
-      margin: 0 0 6px;
-      font-size: 1rem;
-    }
-
-    .shot-content p {
+    .feature-card p,
+    .step p,
+    .cta-card p {
       margin: 0;
       color: var(--muted);
-      font-size: 0.95rem;
     }
 
     .steps-grid {
-      display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-
-    .step {
-      padding: 20px;
     }
 
     .step-number {
@@ -367,48 +307,39 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border-radius: 999px;
-      background: rgba(212, 160, 23, 0.14);
-      color: var(--accent);
-      border: 1px solid rgba(212, 160, 23, 0.32);
+      border: 1px solid var(--border);
+      background: var(--accent);
+      color: var(--button-text);
       font-weight: 800;
       margin-bottom: 12px;
     }
 
-    .step h3 {
-      margin: 0 0 8px;
-      font-size: 1rem;
+    .cta-grid {
+      grid-template-columns: 1fr 1fr;
     }
 
-    .step p {
-      margin: 0;
+    .cta-card ul {
+      margin: 12px 0 0;
+      padding-left: 18px;
       color: var(--muted);
-      font-size: 0.96rem;
     }
 
-    .faq-list {
-      display: grid;
-      gap: 14px;
+    .cta-card li {
+      margin-bottom: 7px;
     }
 
-    .faq-item {
-      padding: 18px 20px;
-    }
-
-    .faq-item h3 {
-      margin: 0 0 8px;
-      font-size: 1rem;
-    }
-
-    .faq-item p {
-      margin: 0;
-      color: var(--muted);
+    .cta-actions {
+      margin-top: 18px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     .footer {
-      border-top: 1px solid var(--border);
-      margin-top: 40px;
-      padding: 26px 0 50px;
+      margin-top: 30px;
+      padding: 26px 0 46px;
+      border-top: 1px solid var(--border-soft);
+      background: rgba(35, 40, 36, 0.88);
       color: var(--muted);
       font-size: 0.94rem;
     }
@@ -416,22 +347,20 @@
     .footer-inner {
       display: flex;
       justify-content: space-between;
-      gap: 18px;
-      align-items: center;
+      gap: 16px;
       flex-wrap: wrap;
     }
 
     @media (max-width: 980px) {
       .hero-grid,
       .features-grid,
-      .download-grid,
-      .shots-grid,
-      .steps-grid {
+      .steps-grid,
+      .cta-grid {
         grid-template-columns: 1fr;
       }
 
       .hero {
-        padding-top: 50px;
+        padding-top: 48px;
       }
     }
 
@@ -446,7 +375,7 @@
         gap: 8px;
       }
 
-      .mini-stats {
+      .hero-stats {
         grid-template-columns: 1fr;
       }
     }
@@ -455,238 +384,172 @@
 <body>
   <header class="nav">
     <div class="container nav-inner">
-      <a class="brand" href="#top" style="display:flex;align-items:center;gap:10px;">
-        <img src="images/launcher-icon.png" height="28">
-        PLAYBF1942
+      <a class="brand" href="index.html">
+        <img src="images/launcher-icon.png" alt="BF1942 Launcher Icon" />
+        <span>PLAYBF1942</span>
       </a>
-      
+
       <nav class="nav-links">
-        <a href="#features">Features</a>
-        <a href="#download">Download</a>
-        <a href="#install">Install</a>
-        <a href="#faq">FAQ</a>
-        <a class="btn btn-primary" href="#download">Download Now</a>
+        <a href="index.html">Home</a>
+        <a href="download.html">Download</a>
+        <a href="faq.html">FAQ</a>
+        <a class="btn btn-primary" href="download.html">Get the Game</a>
       </nav>
     </div>
   </header>
 
-  <main id="top">
+  <main>
     <section class="hero">
       <div class="container hero-grid">
         <div>
           <span class="eyebrow">Battlefield 1942 Community Edition</span>
           <h1>Play Battlefield 1942 online again.</h1>
           <p>
-            Download Battlefield 1942 with Road to Rome, Secret Weapons, the multiplayer
-            connectivity fix, and an integrated launcher that makes joining servers easy on modern PCs.
+            Install Battlefield 1942, Road to Rome, Secret Weapons, the multiplayer fix,
+            and the integrated launcher in one clean setup built for modern PCs.
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#download">Download Installer</a>
-            <a class="btn btn-secondary" href="#install">View Install Guide</a>
+            <a class="btn btn-primary" href="download.html">View Downloads</a>
+            <a class="btn btn-secondary" href="faq.html">Install Guide / FAQ</a>
           </div>
 
           <div class="hero-meta">
-            <span>Base game + XPack1 + XPack2 included</span>
-            <span>Launcher integrated</span>
-            <span>Modern multiplayer fix included</span>
+            <span>Base game + XPack1 + XPack2</span>
+            <span>Integrated launcher</span>
+            <span>Community multiplayer ready</span>
           </div>
         </div>
 
-        <div class="panel">
+        <div class="panel hero-panel">
           <div class="launcher-preview">
-            <span class="preview-badge">Replace with your launcher screenshot</span>
+            <span class="preview-badge">BF1942 Launcher</span>
           </div>
 
-          <div class="mini-stats">
+          <div class="hero-stats">
             <div class="mini-stat">
               <strong>One Complete Package</strong>
-              <span>Install the game, expansions, and launcher together.</span>
+              <span>Game, expansions, fix, and launcher together.</span>
             </div>
             <div class="mini-stat">
-              <strong>Ready for Online Play</strong>
-              <span>No manual GameSpy-era patching or config edits.</span>
+              <strong>Fastest Way to Play</strong>
+              <span>No old patch hunting or broken setup steps.</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="features">
+    <section>
       <div class="container">
-        <h2 class="section-title">Why use this installer?</h2>
+        <h2 class="section-title">Why this exists</h2>
         <p class="section-copy">
-          The goal is simple: remove the friction. New players should be able to download,
-          install, open the launcher, and get into a server without chasing old files or forum posts.
+          The goal is simple: remove the friction. New players should be able to visit one website,
+          download the installer, launch the browser, and join a server without digging through old forums,
+          broken links, or outdated multiplayer fixes.
         </p>
 
         <div class="features-grid">
           <article class="feature-card">
             <h3>Complete Edition</h3>
             <p>
-              Includes Battlefield 1942, Road to Rome, and Secret Weapons in a single package.
+              Includes Battlefield 1942, Road to Rome, and Secret Weapons in one community package.
             </p>
           </article>
 
           <article class="feature-card">
             <h3>Integrated Launcher</h3>
             <p>
-              Use a dedicated launcher to browse servers, manage favorites, and join quickly.
+              Browse servers, manage favorites, and join games through a dedicated launcher.
             </p>
           </article>
 
           <article class="feature-card">
-            <h3>Built for Multiplayer</h3>
+            <h3>Modern Multiplayer Fix</h3>
             <p>
-              Includes the multiplayer fix so the game points to the community master server.
+              Built to point the game toward the community master server so online play just works.
             </p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="download">
+    <section>
       <div class="container">
-        <h2 class="section-title">Download</h2>
+        <h2 class="section-title">How it works</h2>
         <p class="section-copy">
-          One installer. One setup flow. Designed to get players into Battlefield 1942 as smoothly as possible.
-        </p>
-
-        <div class="download-grid">
-          <div class="download-card">
-            <h3>Battlefield 1942 Community Installer</h3>
-            <p>
-              This package is intended to be the easiest way to install and play Battlefield 1942 online on a modern PC.
-            </p>
-            <ul class="checklist">
-              <li>Battlefield 1942</li>
-              <li>Road to Rome</li>
-              <li>Secret Weapons</li>
-              <li>Multiplayer / master server fix</li>
-              <li>Integrated BF1942 launcher</li>
-            </ul>
-          </div>
-
-          <div class="download-card">
-            <h3>Current Release</h3>
-            <p><strong>Version:</strong> 1.0.0</p>
-            <p><strong>Platform:</strong> Windows</p>
-            <p><strong>Installer Size:</strong> Replace with actual size</p>
-            <p><strong>Release Date:</strong> Replace with release date</p>
-
-            <div class="download-actions">
-              <a class="btn btn-primary" href="https://example.com/your-download-link.exe">Download Installer</a>
-              <a class="btn btn-secondary" href="#faq">Read FAQ</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="screenshots">
-      <div class="container">
-        <h2 class="section-title">Screenshots</h2>
-        <p class="section-copy">
-          Replace these placeholders with your actual launcher, server browser, and gameplay screenshots.
-        </p>
-
-        <div class="shots-grid">
-          <article class="shot">
-            <div class="shot-image"></div>
-            <div class="shot-content">
-              <h3>Launcher</h3>
-              <p>Your launcher becomes the main entry point for the game.</p>
-            </div>
-          </article>
-
-          <article class="shot">
-            <div class="shot-image"></div>
-            <div class="shot-content">
-              <h3>Server Browser</h3>
-              <p>Players can browse servers, favorite them, and join with a double click.</p>
-            </div>
-          </article>
-
-          <article class="shot">
-            <div class="shot-image"></div>
-            <div class="shot-content">
-              <h3>Gameplay</h3>
-              <p>Show the classic Battlefield 1942 experience people are coming back for.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="install">
-      <div class="container">
-        <h2 class="section-title">Install Guide</h2>
-        <p class="section-copy">
-          The install process should be straightforward. This section helps new players know exactly what to expect.
+          The install flow is designed to be simple whether you're brand new to Battlefield 1942
+          or just updating your launcher.
         </p>
 
         <div class="steps-grid">
           <article class="step">
             <div class="step-number">1</div>
-            <h3>Download</h3>
-            <p>Download the Battlefield 1942 Community Installer from the button above.</p>
+            <h3>Choose your download</h3>
+            <p>Select the full Community Package or the Launcher Setup.</p>
           </article>
 
           <article class="step">
             <div class="step-number">2</div>
-            <h3>Install</h3>
-            <p>Run the installer and choose your preferred install location if needed.</p>
+            <h3>Run the installer</h3>
+            <p>Install to your preferred location and let setup handle the rest.</p>
           </article>
 
           <article class="step">
             <div class="step-number">3</div>
-            <h3>Launch</h3>
-            <p>Open the BF1942 Launcher from the desktop or Start Menu shortcut.</p>
+            <h3>Open the launcher</h3>
+            <p>Launch the BF1942 Launcher from the desktop or Start Menu shortcut.</p>
           </article>
 
           <article class="step">
             <div class="step-number">4</div>
-            <h3>Join a Server</h3>
-            <p>Browse the server list and double click a server to play.</p>
+            <h3>Join a server</h3>
+            <p>Browse the list and double click a server to get in-game quickly.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="faq">
+    <section>
       <div class="container">
-        <h2 class="section-title">FAQ</h2>
+        <h2 class="section-title">Choose your setup</h2>
         <p class="section-copy">
-          A few simple answers for the most common questions new players are likely to have.
+          Two installers. One for brand new players, and one for players who already have Battlefield 1942 installed.
         </p>
 
-        <div class="faq-list">
-          <article class="faq-item">
-            <h3>Do I need to install any extra multiplayer patches?</h3>
+        <div class="cta-grid">
+          <article class="cta-card">
+            <h3>Community Package Setup</h3>
             <p>
-              No. The goal of this package is to include the multiplayer connectivity fix so players can install and play without extra steps.
+              Best for new players or anyone who wants the complete Battlefield 1942 setup in one install.
             </p>
+            <ul>
+              <li>Battlefield 1942</li>
+              <li>Road to Rome</li>
+              <li>Secret Weapons</li>
+              <li>Multiplayer / master server fix</li>
+              <li>Integrated launcher</li>
+            </ul>
+            <div class="cta-actions">
+              <a class="btn btn-primary" href="download.html">Download Community Package</a>
+            </div>
           </article>
 
-          <article class="faq-item">
-            <h3>Does this include the expansions?</h3>
+          <article class="cta-card">
+            <h3>Launcher Setup</h3>
             <p>
-              Yes. This package includes Battlefield 1942, Road to Rome, and Secret Weapons.
+              Best for players who already have BF1942 installed or just need to update the launcher.
             </p>
-          </article>
-
-          <article class="faq-item">
-            <h3>How do I join a server?</h3>
-            <p>
-              Open the launcher after installation, wait for the server list to load, then double click a server to join.
-            </p>
-          </article>
-
-          <article class="faq-item">
-            <h3>Is this an official EA release?</h3>
-            <p>
-              No. This is a community project intended to make Battlefield 1942 easier to install and play online.
-            </p>
+            <ul>
+              <li>Launcher only</li>
+              <li>Quick install for existing players</li>
+              <li>Useful for launcher updates</li>
+              <li>Smaller download</li>
+              <li>Works with existing BF1942 installs</li>
+            </ul>
+            <div class="cta-actions">
+              <a class="btn btn-secondary" href="download.html">Download Launcher Setup</a>
+            </div>
           </article>
         </div>
       </div>
@@ -701,4 +564,3 @@
   </footer>
 </body>
 </html>
-
