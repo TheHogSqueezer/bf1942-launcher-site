@@ -6,294 +6,21 @@
   <title>Downloads - PlayBF1942</title>
   <meta
     name="description"
-    content="Download the Battlefield 1942 Community Package Setup or the Launcher Setup."
+    content="Download the PlayBF1942 Community Package Setup or Launcher Setup."
   />
-  <style>
-    :root {
-      --bg: #2f3430;
-      --bg-dark: #232824;
-      --panel: #4a4f49;
-      --panel-soft: #535851;
-      --panel-alt: #434842;
-      --border: #8d9364;
-      --border-soft: rgba(141, 147, 100, 0.45);
-      --text: #e7ddb3;
-      --muted: #d3c99f;
-      --accent: #8f946f;
-      --accent-hover: #a0a57d;
-      --button-text: #f4ebc3;
-      --shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
-      --radius: 10px;
-      --max-width: 1180px;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background:
-        linear-gradient(rgba(35, 40, 36, 0.94), rgba(35, 40, 36, 0.94)),
-        var(--bg-dark);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(calc(100% - 32px), var(--max-width));
-      margin: 0 auto;
-    }
-
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(35, 40, 36, 0.96);
-      border-bottom: 1px solid var(--border-soft);
-    }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      padding: 14px 0;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      font-size: 1.05rem;
-      letter-spacing: 0.5px;
-    }
-
-    .brand img {
-      height: 30px;
-      border: 1px solid var(--border-soft);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      font-size: 0.96rem;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 18px;
-      border-radius: 2px;
-      font-weight: 700;
-      border: 1px solid var(--border);
-      transition: 0.18s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: var(--button-text);
-    }
-
-    .btn-primary:hover {
-      background: var(--accent-hover);
-    }
-
-    .btn-secondary {
-      background: rgba(83, 88, 81, 0.82);
-      color: var(--text);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(94, 100, 92, 0.92);
-    }
-
-    .page-header {
-      padding: 56px 0 20px;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 12px;
-      color: var(--muted);
-      font-weight: 700;
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    h1 {
-      margin: 0 0 14px;
-      font-size: clamp(2.3rem, 4vw, 3.9rem);
-      line-height: 1.05;
-      text-transform: uppercase;
-    }
-
-    .lead {
-      margin: 0;
-      color: var(--muted);
-      max-width: 780px;
-      font-size: 1.04rem;
-    }
-
-    .download-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      padding: 26px 0 34px;
-    }
-
-    .card {
-      background: rgba(74, 79, 73, 0.96);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 24px;
-    }
-
-    .card h2 {
-      margin: 0 0 10px;
-      font-size: 1.4rem;
-      text-transform: uppercase;
-    }
-
-    .card p {
-      margin: 0 0 10px;
-      color: var(--muted);
-    }
-
-    .badge {
-      display: inline-block;
-      margin-bottom: 14px;
-      background: rgba(67, 72, 66, 0.92);
-      border: 1px solid var(--border-soft);
-      color: var(--text);
-      padding: 8px 10px;
-      font-size: 0.86rem;
-      font-weight: 700;
-      border-radius: 2px;
-    }
-
-    .list {
-      margin: 14px 0 18px;
-      padding-left: 18px;
-      color: var(--muted);
-    }
-
-    .list li {
-      margin-bottom: 8px;
-    }
-
-    .meta {
-      display: grid;
-      gap: 8px;
-      margin: 18px 0;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .info-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      padding: 0 0 46px;
-    }
-
-    .info-card {
-      background: rgba(67, 72, 66, 0.94);
-      border: 1px solid var(--border-soft);
-      border-radius: var(--radius);
-      padding: 22px;
-    }
-
-    .info-card h3 {
-      margin: 0 0 10px;
-      text-transform: uppercase;
-      font-size: 1.05rem;
-    }
-
-    .info-card p,
-    .info-card ul {
-      color: var(--muted);
-      margin: 0;
-    }
-
-    .info-card ul {
-      padding-left: 18px;
-      margin-top: 10px;
-    }
-
-    .info-card li {
-      margin-bottom: 7px;
-    }
-
-    .footer {
-      margin-top: 10px;
-      padding: 26px 0 46px;
-      border-top: 1px solid var(--border-soft);
-      background: rgba(35, 40, 36, 0.88);
-      color: var(--muted);
-      font-size: 0.94rem;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 980px) {
-      .download-grid,
-      .info-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .nav-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="nav">
-    <div class="container nav-inner">
+  <header class="site-header">
+    <div class="container header-inner">
       <a class="brand" href="index.html">
         <img src="images/launcher-icon.png" alt="BF1942 Launcher Icon" />
-        <span>PLAYBF1942</span>
+        <span>PlayBF1942</span>
       </a>
 
       <nav class="nav-links">
         <a href="index.html">Home</a>
-        <a href="download.html">Download</a>
+        <a class="active" href="download.html">Download</a>
         <a href="faq.html">FAQ</a>
         <a class="btn btn-primary" href="download.html">Downloads</a>
       </nav>
@@ -305,64 +32,60 @@
       <span class="eyebrow">Downloads</span>
       <h1>Choose your installer</h1>
       <p class="lead">
-        The Community Package Setup is intended for new players and complete installs.
-        The Launcher Setup is intended for players who already have Battlefield 1942 installed
-        or just need the newest launcher version.
+        Two setup options are available. Choose the one that best matches your current Battlefield 1942 situation.
       </p>
     </section>
 
     <section class="download-grid">
-      <article class="card">
-        <span class="badge">Recommended for new players</span>
+      <article class="download-card">
+        <span class="badge">Recommended for broader setup</span>
         <h2>Community Package Setup</h2>
         <p>
-          The full all-in-one Battlefield 1942 package.
+          Intended for players who want the fuller community setup path, including launcher integration and multiplayer-oriented configuration.
         </p>
 
         <ul class="list">
-          <li>Battlefield 1942</li>
-          <li>Road to Rome</li>
-          <li>Secret Weapons</li>
-          <li>Multiplayer / master server fix</li>
-          <li>Integrated BF1942 Launcher</li>
+          <li>Broader community setup path</li>
+          <li>Integrated launcher support</li>
+          <li>Multiplayer-oriented configuration</li>
+          <li>Good for new or returning players</li>
         </ul>
 
         <div class="meta">
           <div><strong>Version:</strong> Replace with package version</div>
           <div><strong>Size:</strong> Replace with file size</div>
           <div><strong>Updated:</strong> Replace with date</div>
-          <div><strong>Best for:</strong> New players and complete installs</div>
+          <div><strong>Best for:</strong> Players wanting the fuller community setup path</div>
         </div>
 
-        <div class="actions">
+        <div class="card-actions">
           <a class="btn btn-primary" href="https://example.com/community-package.exe">Download Community Package</a>
           <a class="btn btn-secondary" href="faq.html">Install Guide</a>
         </div>
       </article>
 
-      <article class="card">
-        <span class="badge">Recommended for existing installs</span>
+      <article class="download-card">
+        <span class="badge">Recommended for existing setups</span>
         <h2>Launcher Setup</h2>
         <p>
-          A launcher-only installer for players who already have Battlefield 1942 installed.
+          Intended for players who already have Battlefield 1942 configured and only need the launcher or an updated launcher installer.
         </p>
 
         <ul class="list">
-          <li>Launcher only</li>
-          <li>Useful for launcher updates</li>
+          <li>Launcher-only setup</li>
           <li>Smaller download</li>
-          <li>Works with existing BF1942 installs</li>
-          <li>Good for current community players</li>
+          <li>Useful for launcher updates</li>
+          <li>Works well with existing installs</li>
         </ul>
 
         <div class="meta">
           <div><strong>Version:</strong> Replace with launcher version</div>
           <div><strong>Size:</strong> Replace with file size</div>
           <div><strong>Updated:</strong> Replace with date</div>
-          <div><strong>Best for:</strong> Existing BF1942 installs and launcher updates</div>
+          <div><strong>Best for:</strong> Existing Battlefield 1942 setups</div>
         </div>
 
-        <div class="actions">
+        <div class="card-actions">
           <a class="btn btn-secondary" href="https://example.com/launcher-setup.exe">Download Launcher Setup</a>
           <a class="btn btn-secondary" href="faq.html">FAQ</a>
         </div>
@@ -371,30 +94,40 @@
 
     <section class="info-grid">
       <article class="info-card">
-        <h3>Which installer should I choose?</h3>
+        <h3>Which one should I choose?</h3>
         <ul>
-          <li>Choose <strong>Community Package Setup</strong> if you do not already have Battlefield 1942 installed.</li>
-          <li>Choose <strong>Launcher Setup</strong> if you already have BF1942 installed and only need the launcher.</li>
-          <li>Choose <strong>Launcher Setup</strong> if you're updating to a newer launcher release.</li>
+          <li>Choose <strong>Community Package Setup</strong> if you want the broader community setup path.</li>
+          <li>Choose <strong>Launcher Setup</strong> if you already have Battlefield 1942 configured and only need the launcher.</li>
+          <li>Choose <strong>Launcher Setup</strong> if you are updating to a newer launcher release.</li>
         </ul>
       </article>
 
       <article class="info-card">
         <h3>What happens after install?</h3>
         <ul>
-          <li>Launch the BF1942 Launcher from the desktop or Start Menu.</li>
-          <li>Wait for the server list to load.</li>
+          <li>Open the BF1942 Launcher from the desktop or Start Menu.</li>
+          <li>Let the server list refresh.</li>
           <li>Double click a server to join.</li>
-          <li>Use the launcher for future updates and server browsing.</li>
+          <li>Use the launcher for future updates and multiplayer access.</li>
         </ul>
       </article>
     </section>
+
+    <section>
+      <div class="callout">
+        <h3>Important note</h3>
+        <p>
+          PlayBF1942 is a community project focused on setup tooling, launcher functionality, and multiplayer access.
+          It is not affiliated with or endorsed by Electronic Arts or DICE.
+        </p>
+      </div>
+    </section>
   </main>
 
-  <footer class="footer">
+  <footer class="site-footer">
     <div class="container footer-inner">
       <div>© 2026 PlayBF1942.com</div>
-      <div>Battlefield 1942 community project. Not affiliated with Electronic Arts.</div>
+      <div>Community project. Not affiliated with or endorsed by Electronic Arts or DICE.</div>
     </div>
   </footer>
 </body>
