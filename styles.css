@@ -440,7 +440,8 @@ section + section {
 .faq-item summary {
   list-style: none;
   cursor: pointer;
-  padding: 20px 22px;
+  padding: 20px 26px;
+  padding-left: 30px;
   font-size: 1.15rem;
   font-weight: 800;
   text-transform: uppercase;
@@ -473,7 +474,8 @@ section + section {
 }
 
 .faq-answer {
-  padding: 0 22px 22px;
+  padding: 0 26px 22px;
+  margin-top: 14px;
   color: var(--text-soft);
   border-top: 1px solid var(--border-soft);
 }
