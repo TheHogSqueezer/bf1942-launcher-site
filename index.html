@@ -43,6 +43,11 @@
             <a class="btn btn-secondary" href="faq.html">Install Guide</a>
           </div>
 
+          <div class="hero-live-stat">
+            <span class="hero-live-label">Players Online Right Now</span>
+            <strong id="hero-player-count">Loading...</strong>
+          </div>
+
           <div class="hero-meta">
             <span>Community launcher</span>
             <span>Multiplayer-ready setup options</span>
@@ -216,6 +221,42 @@
       <div>Community project. Not affiliated with or endorsed by Electronic Arts or DICE.</div>
     </div>
   </footer>
+    
+    <script>
+    async function loadHeroPlayerCount() {
+      try {
+        const response = await fetch("https://api.bflist.io/v2/bf1942/servers");
+    
+        if (!response.ok) {
+          throw new Error("Failed to fetch player count");
+        }
+    
+        const servers = await response.json();
+    
+        let totalPlayers = 0;
+    
+        if (Array.isArray(servers)) {
+          servers.forEach(server => {
+            totalPlayers += Number(server.players || 0);
+          });
+        }
+    
+        const playerCountEl = document.getElementById("hero-player-count");
+        if (playerCountEl) {
+          playerCountEl.textContent = totalPlayers.toLocaleString();
+        }
+      } catch (error) {
+        console.error("Hero player count error:", error);
+        const playerCountEl = document.getElementById("hero-player-count");
+        if (playerCountEl) {
+          playerCountEl.textContent = "—";
+        }
+      }
+    }
+    
+    loadHeroPlayerCount();
+    setInterval(loadHeroPlayerCount, 60000);
+    </script>
   
 </body>
 </html>
