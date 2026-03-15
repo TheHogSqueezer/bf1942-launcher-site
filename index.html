@@ -223,6 +223,25 @@
   </footer>
     
   <script>
+  function animateCount(el, start, end, duration = 600) {
+    let startTime = null;
+  
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+  
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+  
+      const value = Math.floor(start + (end - start) * progress);
+      el.textContent = value.toLocaleString();
+  
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    }
+  
+    requestAnimationFrame(step);
+  }
+  
   async function loadHeroPlayerCount() {
     try {
       const response = await fetch("https://api.bflist.io/v2/bf1942/servers", {
@@ -241,9 +260,14 @@
       }, 0);
   
       const playerCountEl = document.getElementById("hero-player-count");
+  
       if (playerCountEl) {
-        playerCountEl.textContent = totalPlayers.toLocaleString();
+        const currentValue =
+          parseInt(playerCountEl.textContent.replace(/,/g, "")) || 0;
+  
+        animateCount(playerCountEl, currentValue, totalPlayers);
       }
+  
     } catch (error) {
       console.error("Hero player count error:", error);
   
